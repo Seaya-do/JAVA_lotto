@@ -1,0 +1,42 @@
+package solo;
+import java.io.*;
+
+public class money_input {
+
+	public static void main(String[] args)throws IOException {
+		System.out.println("수입 기록지 입니다. 몇 명이 기록 할지 숫자를 적으십시오.");
+		
+		
+		
+		
+		BufferedReader br =
+				new BufferedReader(new InputStreamReader(System.in));
+		
+		
+		String str = br.readLine();
+		int num = Integer.parseInt(str);
+		
+		
+		//필요한 개수 만큼 배열 요소 준비
+		int [] money;
+		money = new int[num];
+		
+		
+	System.out.println("오늘 들어 온 수입을 차례대로 입력 하시오.");
+		
+	for (int i =0; i < num; i++) {
+		str = br.readLine();
+		int tmp = Integer.parseInt(str);
+		money[i] = tmp; 
+	}
+	
+	for (int i = 0; i < num; i++) {
+		System.out.println((i + 1)+" 번 " + money[i] + "입니다.");
+		
+	
+	}
+		
+		
+		}
+
+}
