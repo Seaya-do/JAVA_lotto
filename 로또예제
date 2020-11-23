@@ -1,0 +1,235 @@
+package lotto;
+
+import java.util.Scanner;
+
+public class Lotto2 {
+
+	public void menu()
+
+	{
+
+		System.out.println("************Lotto Program************");
+
+		System.out.println("0. 종료 1. 직접입력 2. 자동생성");
+
+	}
+
+	public int[] randomValue()
+
+	{
+
+		int[] lotto = new int[6];
+
+		for(int i = 0; i<6; i++)
+
+		{
+
+			lotto[i] = (int)(Math.random()*45)+1;
+
+			for(int j = i-1; j>=0; j--)
+
+			{
+
+				if(lotto[i]==lotto[j])
+
+				{
+
+					i--;
+
+				}
+
+				break;	
+
+			}			
+
+		}
+
+		return lotto;
+
+	}
+
+	
+
+	public int count(int [] comlotto, int [] mylotto)
+
+	{
+
+		int count = 0;
+
+		for(int i = 0; i<6; i++)
+
+		{
+
+			for(int j = 0; j<6; j++)
+
+			{
+
+				if( mylotto[i] == comlotto[j] )
+
+				{
+
+					count++;
+
+				}
+
+			}
+
+		}
+
+		return count;
+
+	}
+
+	public void render(int[] value)
+
+	{
+
+		for(int i = 0; i<value.length; i++)
+
+		{
+
+			System.out.print(value[i]+ " ");
+
+		}
+
+		System.out.println();
+
+	}
+
+    public void result(int count)
+
+    {
+
+    	switch (count) {
+
+    	case 0:
+
+    		System.out.println("하나도 맞지 않았습니다.");
+
+    		System.out.println("꽝꽝꽝꽝꽝꽝꽝꽝꽝꽝꽝");
+
+    		break;
+
+    	case 1:
+
+    		System.out.println("하나 맞았습니다.");
+
+    		System.out.println("꽝꽝꽝꽝꽝꽝꽝꽝꽝꽝꽝");
+
+    		break;
+
+		case 2:
+
+			System.out.println("두개 맞았습니다.");
+
+    		System.out.println("아쉽게 꽝이네요~");
+
+    		break;
+
+		case 3:
+
+			System.out.println("축하합니다. 5등에 당첨되셨습니다.");
+
+			System.out.println("5,000원을 받으세요~!");
+
+			break;
+
+		case 4:
+
+			System.out.println("축하합니다. 4등에 당첨되셨습니다.");
+
+			System.out.println("50,000원을 받으세요~!");
+
+			break;
+
+		case 5:
+
+			System.out.println("축하합니다. 2등에 당첨되셨습니다.");
+
+			System.out.println("100,000,000원을 받으세요~!");
+
+			break;
+
+		case 6:
+
+			System.out.println("축하합니다. 1등에 당첨되셨습니다.");
+
+			System.out.println("2,000,000,000원을 받으세요~!");
+
+			break;
+
+		}
+
+    }
+
+	public static void main(String[] args) {
+
+		Lotto2 main = new Lotto2();
+
+		int[] mylotto1 = new int[6];  // 직접입력
+
+		int[] mylotto2 = new int[6];  // 자동
+
+		int[] comlotto = new int[6];  // 당첨번호
+
+		comlotto = main.randomValue();
+
+		Scanner scanner = new Scanner(System.in); 
+
+		
+
+		int input;
+
+		while(true)
+
+		{
+
+			main.menu();
+
+			System.out.print("선택 : ");
+
+			input = scanner.nextInt();
+
+			
+
+			switch (input) {
+
+			case 0:
+
+				System.out.println("0을 입력하셔서 종료합니다.");
+
+				return;
+
+			case 1:
+
+			    // 미구현
+
+				System.out.println("준비중~!");
+
+				break;
+
+			case 2:
+
+				mylotto2 = main.randomValue();
+
+				main.render(comlotto);
+
+				main.render(mylotto2);
+
+				main.result(main.count(comlotto, mylotto2));
+
+				
+
+			default:
+
+				System.out.println("잘못입력하셨습니다.");
+
+				break;
+
+			}
+
+		}
+
+	}
+
+}
