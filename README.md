@@ -1,8 +1,6 @@
 //자바 로또만들기 
-
 package Lotto;
 import java.util.Arrays;
-
 public class LottoNum {
 	private int[] lots;
 	private int base;  //45
@@ -14,8 +12,7 @@ public class LottoNum {
 		//배열 생성
 		lots = new int[ballNum];	
 	}
-  
- public LottoNum() {
+	public LottoNum() {
 		this(45,6);
 	}
 	
@@ -34,7 +31,7 @@ public class LottoNum {
 		return (int)(Math.random() * base) +1 ;
 	}
 	public boolean contain(int n) {
-		boolean isC = false;
+		boolean isC = false
 		for(int i = 0; i <lots.length; i++) {
 			if(lots[i] == n) {
 				isC = true;
